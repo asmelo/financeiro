@@ -1,0 +1,182 @@
+<div class="section">
+  <div class="row">
+    <div class="input-field col s6 m2">
+      {{#power-select options=anos selected=ano onchange=(action "selecionaAno") as |ano|}}
+        {{ano}}
+      {{/power-select}}
+    </div>
+    <div class="input-field col s6 m3">
+      {{#power-select options=meses selected=mes onchange=(action "selecionaMes") as |mes|}}
+        {{mes}}
+      {{/power-select}}
+    </div>
+    <div class="input-field col s12 m3">
+      {{#power-select options=graficos selected=grafico onchange=(action "selecionaGrafico") as |grafico|}}
+        {{grafico}}
+      {{/power-select}}
+    </div>
+  </div>
+</div>
+
+ <div class="divider"></div>
+
+<div class="section">
+  {{#if (eq grafico 'Subcategorias')}}
+    <canvas id="chartSubcategorias" style="width: 400px; height: 400px"></canvas>
+    <div class="divider"></div>
+  {{/if}}
+
+  {{#if (eq grafico 'Categorias')}}
+    <canvas id="chartCategorias" style="width: 400px; height: 400px"></canvas>
+    <div class="divider"></div>
+  {{/if}}
+
+  {{#if (eq grafico 'Salários')}}
+    <canvas id="chartSalarios" style="width: 400px; height: 400px"></canvas>
+  {{/if}}
+</div>
+
+<div class="section">
+  <h4>Subcategorias - Monitoramento</h4>
+  {{#if (eq listaSubcategoriasMonitoramento.length 0)}}
+    <div class="row">
+      <div class="col s12 center">
+        Não existem lançamentos para o mês {{mes}}/{{ano}}.
+      </div>
+    </div>
+  {{else}}
+    <ul class="collection">
+      {{#each listaSubcategoriasMonitoramento as |dado|}}
+        <li class="collection-item">
+          <div class="row">
+
+            <div class="col s8 m4">
+              {{dado.chave}}
+            </div>
+
+            <div class="col s4 m2">
+              {{format-money dado.valor}}
+            </div>
+
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+
+<div class="section">
+  <h4>Subcategorias</h4>
+  {{#if (eq listaSubcategorias.length 0)}}
+    <div class="row">
+      <div class="col s12 center">
+        Não existem lançamentos para o mês {{mes}}/{{ano}}.
+      </div>
+    </div>
+  {{else}}
+    <ul class="collection">
+      {{#each listaSubcategorias as |dado|}}
+        <li class="collection-item">
+          <div class="row">
+
+            <div class="col s8 m4">
+              {{dado.chave}}
+            </div>
+
+            <div class="col s4 m2">
+              {{format-money dado.valor}}
+            </div>
+
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+
+<div class="section">
+  <h4>Categorias</h4>
+  {{#if (eq listaCategorias.length 0)}}
+    <div class="row">
+      <div class="col s12 center">
+        Não existem lançamentos para o mês {{mes}}/{{ano}}.
+      </div>
+    </div>
+  {{else}}
+    <ul class="collection">
+      {{#each listaCategorias as |dado|}}
+        <li class="collection-item">
+          <div class="row">
+
+            <div class="col s8 m4">
+              {{dado.chave}}
+            </div>
+
+            <div class="col s4 m2">
+              {{format-money dado.valor}}
+            </div>
+
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+
+<div class="section">
+  <h4>Entradas</h4>
+  {{#if (eq listaEntradas.length 0)}}
+    <div class="row">
+      <div class="col s12 center">
+        Não existem lançamentos para o mês {{mes}}/{{ano}}.
+      </div>
+    </div>
+  {{else}}
+    <ul class="collection">
+      {{#each listaEntradas as |dado|}}
+        <li class="collection-item">
+          <div class="row">
+
+            <div class="col s8 m4">
+              {{dado.chave}}
+            </div>
+
+            <div class="col s4 m2">
+              {{format-money dado.valor}}
+            </div>
+
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>
+
+<div class="section">
+  <h4>Transferências</h4>
+  {{#if (eq listaTransferencias.length 0)}}
+    <div class="row">
+      <div class="col s12 center">
+        Não existem lançamentos para o mês {{mes}}/{{ano}}.
+      </div>
+    </div>
+  {{else}}
+    <ul class="collection">
+      {{#each listaTransferencias as |dado|}}
+        <li class="collection-item">
+          <div class="row">
+
+            <div class="col s8 m4">
+              {{dado.chave}}
+            </div>
+
+            <div class="col s4 m2">
+              {{format-money dado.valor}}
+            </div>
+
+          </div>
+        </li>
+      {{/each}}
+    </ul>
+  {{/if}}
+</div>

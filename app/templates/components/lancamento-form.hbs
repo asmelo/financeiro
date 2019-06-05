@@ -1,0 +1,46 @@
+<div class="row">
+  <div class="col s12 m3">
+    <label>Tipo</label>
+    {{#power-select options=selectItensTipos selected=tipo onchange=(action "selecionaTipo") as |tipo|}}
+      {{tipo}}
+    {{/power-select}}
+  </div>
+
+  <div class="col s12 m3">
+    <label>Data</label>
+    {{pikaday-input value=dataLancamento onSelection=(action 'selecionaData') format="DD/MM/YYYY"}}
+  </div>
+
+  <div class="col s12 m3">
+    <label>Conta</label>
+    {{#power-select options=selectItensContas selected=conta onchange=(action "selecionaConta") as |conta|}}
+      {{conta}}
+    {{/power-select}}
+  </div>
+
+  <div class="col s12 m3">
+    {{input-moeda name="valor" value=valor label="Valor" maxlength="17" }}
+  </div>
+
+</div>
+
+<div class="row">
+  <div class="col s12 m3">
+    <label>Subcategorias</label>
+    {{#power-select options=selectItensSubcategoria selected=subcategoria onchange=(action "selecionaSubcategoria") as |subcategoria|}}
+      {{subcategoria}}
+    {{/power-select}}
+  </div>
+
+  <div class="col s12 m9">
+    <label>Descrição</label>
+    {{input value=descricao }}
+  </div>
+</div>
+
+<div class="row right">
+  <div class="col s12">
+    {{#link-to "portal.lancamento" class="waves-effect waves-light btn-flat"}}Cancelar{{/link-to}}
+    <a class="waves-effect waves-light btn" {{action "salvar"}}>Salvar</a>
+  </div>
+</div>

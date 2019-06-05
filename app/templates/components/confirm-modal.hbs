@@ -1,0 +1,10 @@
+{{#modal-component name=name as |section| }}
+    {{#if section.isContent}}
+        <p>
+            {{msg}}
+        </p>
+    {{else if section.isFooter}}
+        <button type="button" class="btn-flat waves-effect waves-light col s2 modal-close"> Não </button>
+        <button type="button" class="btn-flat waves-effect waves-light col s2 modal-close" {{action "actionConfirm"}}> Sim </button>
+    {{/if}}
+{{/modal-component}}

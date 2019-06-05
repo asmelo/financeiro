@@ -1,0 +1,16 @@
+{{#if icon}}<i class=" prefix {{icon}}"></i>{{/if}}
+{{#if label}}
+<label class="{{if active "active"}}">{{label}}</label>
+{{/if}}
+{{input type="text" id=name name=name value=value disabled=disabled readonly=readonly maxlength=maxlength key-up=actionkey focus-out="focusOut" placeholder=placeholder}}
+{{#if erro }}
+  <div>
+  	<div class="error">
+      {{#if msgErroPadrao}}
+            {{mensagem-erro erro}}
+      {{else}}
+            {{erro}}
+      {{/if}}
+    </div>
+  </div>
+{{/if}}

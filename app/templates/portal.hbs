@@ -1,0 +1,20 @@
+<nav>
+  <div class="nav-wrapper">
+    {{#link-to "portal" class="left"}}
+      <i class="large material-icons">attach_money</i>
+    {{/link-to}}
+    {{#link-to "portal.lancamento" class="left hide-on-large-only"}}
+      <i class="large material-icons">archive</i>
+    {{/link-to}}
+    {{#link-to "portal.relatorio" class="left hide-on-large-only"}}
+      <i class="large material-icons">graphic_eq</i>
+    {{/link-to}}
+    <ul id="nav-mobile" class="right hide-on-med-and-down">
+      <li>{{#link-to "portal.lancamento"}}Lançamentos{{/link-to}}</li>
+      <li>{{#link-to "portal.relatorio"}}Relatórios{{/link-to}}</li>
+    </ul>
+  </div>
+</nav>
+<div class="container" style="width: 90%;">
+  {{outlet}}
+</div>
