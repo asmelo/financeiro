@@ -36,8 +36,7 @@ module.exports = function(environment) {
     // ENV.APP.LOG_ACTIVE_GENERATION = true;
     // ENV.APP.LOG_TRANSITIONS = true;
     // ENV.APP.LOG_TRANSITIONS_INTERNAL = true;
-    // ENV.APP.LOG_VIEW_LOOKUPS = true;
-    ENV.APP.host = 'http://localhost:8080';
+    // ENV.APP.LOG_VIEW_LOOKUPS = true;    
   }
 
   if (environment === 'test') {
@@ -52,10 +51,10 @@ module.exports = function(environment) {
   }
 
   if (environment === 'production') {
-    ENV.APP.host = 'http://54.207.40.169:8080';
+
   }
 
-
+  ENV.APP.host = 'http://localhost:8080';
 
   return ENV;
 };
