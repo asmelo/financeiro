@@ -13,7 +13,7 @@ export default Ember.Controller.extend({
     return this.get('lancamentos').filter(lancamento => lancamento.filter(pesquisa));
   }),
 
-  sortDefinition: ['idConta:asc', 'dtLancamento:asc'],
+  sortDefinition: ['idconta:asc', 'dtlancamento:asc'],
   lancamentosOrdenados: Ember.computed.sort('lancamentosFiltrado', 'sortDefinition'),
 
   actions: {
@@ -46,12 +46,12 @@ export default Ember.Controller.extend({
       })
     },
 
-    importaArquivoOfx(idConta) {
+    importaArquivoOfx(idconta) {
       this.set('loadingImportacao', true);
       this.get('ajax').request(config.APP.host + '/importarArquivoOfx', {
             type: 'POST',
             data: {
-              "idConta": idConta
+              "idconta": idconta
             }
       }).then(response => {
         this.get('alerta').sucesso('Arquivo importado com sucesso.')

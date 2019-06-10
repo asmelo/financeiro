@@ -19,30 +19,30 @@ export default Ember.Component.extend({
         let lancamento = this.get('lancamento');
 
         this.set('id', lancamento.get('id'));
-        this.set('idConta', lancamento.get('idConta'));
-        if(this.get('idConta') == 1) this.set('conta', 'Banco do Brasil');
-        if(this.get('idConta') == 2) this.set('conta', 'Caixa Econômica');
-        if(this.get('idConta') == 3) this.set('conta', 'Cartão de Crédito');
-        if(this.get('idConta') == 4) this.set('conta', 'Dinheiro');
+        this.set('idconta', lancamento.get('idconta'));
+        if(this.get('idconta') == 1) this.set('conta', 'Banco do Brasil');
+        if(this.get('idconta') == 2) this.set('conta', 'Caixa Econômica');
+        if(this.get('idconta') == 3) this.set('conta', 'Cartão de Crédito');
+        if(this.get('idconta') == 4) this.set('conta', 'Dinheiro');
 
-        this.set('cdTipo', lancamento.get('cdTipo'));
-        if(this.get('cdTipo') == 1) this.set('tipo', 'Entrada');
-        if(this.get('cdTipo') == 2) this.set('tipo', 'Saída');
+        this.set('cdtipo', lancamento.get('cdtipo'));
+        if(this.get('cdtipo') == 1) this.set('tipo', 'Entrada');
+        if(this.get('cdtipo') == 2) this.set('tipo', 'Saída');
 
-        this.set('dataLancamento', lancamento.get('dtLancamento'));
+        this.set('dtlancamento', lancamento.get('dtlancamento'));
         this.set('descricao', lancamento.get('descricao'));
         this.set('valor', lancamento.get('valor'));
         this.set('subcategoriaModel', lancamento.get('subcategoria'));
         this.set('subcategoria', lancamento.get('subcategoria').get('descricao'));
 
-        this.set('referenciaOfx', lancamento.get('referenciaOfx'));
+        this.set('referenciaofx', lancamento.get('referenciaofx'));
       }else{
         let hoje = new Date();
-        this.set('dataLancamento', hoje);
+        this.set('dtlancamento', hoje);
         this.set('tipo', 'Saída');
-        this.set('cdTipo', 2);
+        this.set('cdtipo', 2);
         this.set('conta', 'Dinheiro');
-        this.set('idConta', 4)
+        this.set('idconta', 4)
       }
 
       let itens = [];
@@ -61,24 +61,24 @@ export default Ember.Component.extend({
       }
     },
 
-    selecionaData(data) {
-      this.set('dataLancamento', data);
+    selecionaData(dtlancamento) {
+      this.set('dtlancamento', dtlancamento);
     },
 
     selecionaConta(conta) {
       this.set('conta', conta);
 
-      if(conta == 'Banco do Brasil') this.set('idConta', 1);
-      if(conta == 'Caixa Econômica') this.set('idConta', 2);
-      if(conta == 'Cartão de Crédito') this.set('idConta', 3);
-      if(conta == 'Dinheiro') this.set('idConta', 4);
+      if(conta == 'Banco do Brasil') this.set('idconta', 1);
+      if(conta == 'Caixa Econômica') this.set('idconta', 2);
+      if(conta == 'Cartão de Crédito') this.set('idconta', 3);
+      if(conta == 'Dinheiro') this.set('idconta', 4);
     },
 
     selecionaTipo(tipo) {
       this.set('tipo', tipo);
 
-      if(tipo == 'Entrada') this.set('cdTipo', 1);
-      if(tipo == 'Saída') this.set('cdTipo', 2);
+      if(tipo == 'Entrada') this.set('cdtipo', 1);
+      if(tipo == 'Saída') this.set('cdtipo', 2);
     },
 
     selecionaSubcategoria(subcategoria) {
@@ -100,9 +100,9 @@ export default Ember.Component.extend({
         //Atualiza lancamento
         let lancamento = this.get('lancamento');
 
-        lancamento.set('cdTipo', this.get('cdTipo'));
-        lancamento.set('idConta', this.get('idConta'));
-        lancamento.set('dtLancamento', this.get('dataLancamento'));
+        lancamento.set('cdtipo', this.get('cdtipo'));
+        lancamento.set('idconta', this.get('idconta'));
+        lancamento.set('dtlancamento', this.get('dtlancamento'));
         lancamento.set('descricao', this.get('descricao'));
         lancamento.set('valor', valor);
         lancamento.set('subcategoria', this.get('subcategoriaModel'));
@@ -116,9 +116,9 @@ export default Ember.Component.extend({
       }else{
         //Cadastra lancamento
         let lancamento = this.get('store').createRecord('lancamento', {
-          idConta: this.get('idConta'),
-          cdTipo: this.get('cdTipo'),
-          dtLancamento: this.get('dataLancamento'),
+          idconta: this.get('idconta'),
+          cdtipo: this.get('cdtipo'),
+          dtlancamento: this.get('dtlancamento'),
           descricao: this.get('descricao'),
           valor: valor,
           subcategoria: this.get('subcategoriaModel')

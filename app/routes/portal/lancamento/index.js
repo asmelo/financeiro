@@ -1,8 +1,8 @@
-import Ember from 'ember';
+import { inject as service } from '@ember/service';
 
 export default Ember.Route.extend({
 
-  tratamentoErro: Ember.inject.service('tratamento-erro'),
+  tratamentoErro: service('tratamento-erro'),
 
   model() {
 
@@ -23,7 +23,7 @@ export default Ember.Route.extend({
     let mes = indice + 1;
 
     return Em.RSVP.hash({
-       subcategorias: this.store.findAll('subcategoria'),
+       //subcategorias: this.store.findAll('subcategoria'),
        lancamentos: this.store.query('lancamento', {
                                        ano: anoAtual,
                                        mes: mes
@@ -33,14 +33,17 @@ export default Ember.Route.extend({
 
   afterModel(model, transition) {
 
+    let subcategorias = this.store.peekAll('subcategoria');
+
     this.controllerFor('portal.lancamento.index').set('lancamentos', model.lancamentos);
-    this.controllerFor('portal.lancamento.index').set('subcategorias', model.subcategorias);
+    this.controllerFor('portal.lancamento.index').set('subcategorias', subcategorias);
     //Itens da combo Subcategoria
     let itens = [];
-    model.subcategorias.forEach(function(item) {
+    subcategorias.forEach(function(item) {
         itens.push(item.get('descricao'));
     }, this);
     this.controllerFor('portal.lancamento.index').set('selectItensSubcategoria', itens);
+
   },
 
 });
