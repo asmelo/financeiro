@@ -50,11 +50,11 @@ module.exports = function(environment) {
     ENV.APP.rootElement = '#ember-testing';
   }
 
+  ENV.APP.host = 'http://localhost:8080';
+
   if (environment === 'production') {
     ENV.APP.host = 'http://54.207.40.169:8080';
-  }
-
-  ENV.APP.host = 'http://localhost:8080';
+  }  
 
   return ENV;
 };
