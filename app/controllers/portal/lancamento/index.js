@@ -48,7 +48,7 @@ export default Ember.Controller.extend({
 
     importaArquivoOfx(idconta) {
       this.set('loadingImportacao', true);
-      this.get('ajax').request(config.APP.host + '/importarArquivoOfx', {
+      this.get('ajax').request(config.APP.host + '/lancamentos/importarArquivoOfx', {
             type: 'POST',
             data: {
               "idconta": idconta
