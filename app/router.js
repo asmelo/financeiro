@@ -15,6 +15,7 @@ Router.map(function() {
     });
     this.route('relatorio');
   });
+  this.route('login');
 });
 
 export default Router;
